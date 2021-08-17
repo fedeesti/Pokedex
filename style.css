@@ -97,7 +97,8 @@ figure {
 }
 
 div.tipos-contenedor > div > strong {
-    width: 70px;
+    width: max-content;
+    padding: 6px;
     color: ghostwhite;
     border-radius: 2px;
     margin-left: 6px;
@@ -119,6 +120,22 @@ div.tipos-contenedor > div > strong {
     background-color: red;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.footer {
+  margin-top: 10px;
+  width: 100%;
+  background-color: #171a21;
+  color: ghostwhite;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: #35aad7;
+}
+
+.footer-link:hover {
+  color: #9bd8d8;
 }
 
 /* COLORES PARA LOS TIPOS */
