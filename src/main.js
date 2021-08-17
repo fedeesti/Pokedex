@@ -57,7 +57,7 @@ function cambiarPagina (siguiente, anterior) {
     });
 }
 
-function cargarModal(url) {
+function cargarModal() {
     document.addEventListener('click', e => {
         if(e.target.matches('#tablero > figure > img')) {
             e.preventDefault();
