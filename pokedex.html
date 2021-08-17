@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap" rel="stylesheet">
     <title>Pokedex</title>
 </head>
 <body>
@@ -15,12 +18,33 @@
         <a href="" class="siguiente">Siguiente &rarr;</a>
     </nav>
 
-    <p id="total-pokemones"></p>
-
-    <div class="indice">
-    </div>
-
     <div class="grid-fluid" id="tablero"></div>
+
+
+    <div class="modal-contenedor">
+        <div class="modal-pokemon">
+            <span class="cerrar-modal">&times;</span>
+                <h5>
+                    <strong class="nombre"></strong>
+                </h5>
+                <img src="" class="img-pokemon" alt="">
+                <p><strong class="id"></strong> </p>
+            <div class="tipos-contenedor">
+                <strong>Tipos</strong>
+                <div class="tipos">
+                </div>
+            </div>
+            <div class="habilidades-contenedor">
+                <strong>Habilidades</strong>
+                <ul class="habilidades">
+                </ul>
+            </div>
+            <div class="informacion-complementaria">
+                <p>Su peso es: <strong class="peso"></strong></p>
+                <p>Su altura es: <strong class="altura"></strong></p>
+            </div>
+        </div>
+    </div>
 
     <script src="main.js"></script>
 </body>

@@ -7,6 +7,8 @@
 html, body {
     height: 100vh;
     text-align: center;
+    background-color: #dc0a2d;
+    font-family: 'Atkinson Hyperlegible', sans-serif;
 }
 
 .indice {
@@ -16,10 +18,33 @@ html, body {
 }
 
 figure {
-    border: solid 2px red;
-    width: 96px;
-    height: 122px;
+    width: 98px;
+    height: 142px;
     border-radius: 10px;
+    border: 2px solid black;
+}
+
+.paginador {
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.paginador > a {
+    text-decoration: none;
+    padding: 5px;
+    background-color: ghostwhite;
+    width: fit-content;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #35aad7;
+}
+
+.paginador > a:hover {
+    text-decoration: none;
+    color: ghostwhite;
+    background-color: #35aad7;
 }
 
 .grid-fluid {
@@ -27,6 +52,134 @@ figure {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-row-gap: 4px;
     text-align: center;
-    border: 4px solid black;
+    border: 10px solid black;
+    background-color: ghostwhite;
     margin: auto;
+    padding: 6px;
 }
+
+.modal-contenedor{
+	display: none;
+	position: fixed;
+	z-index:1;
+	overflow: auto;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height:100%;
+	background: rgba(0, 0, 0, 0.2);
+}
+
+.modal-pokemon {
+    position: relative;
+    margin: 35vh auto;
+    padding: 6px;
+    width: 30%;
+    box-shadow: 1px 7px 25px rgba(0,0,0,0.6);
+    border-radius: 10px;
+    background-color: ghostwhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.modal-pokemon > div {
+    margin-top: 10px;
+}
+
+.tipos {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+    align-items: center;
+}
+
+div.tipos-contenedor > div > strong {
+    width: 70px;
+    color: ghostwhite;
+    border-radius: 2px;
+    margin-left: 6px;
+}
+
+.habilidades {
+    list-style:none;
+}
+
+.cerrar-modal {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+	  color: #f2f2f2;
+	  font-size: 20px;
+    width: 24px;
+    margin: auto;
+	  font-weight: bold;
+    background-color: red;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* COLORES PARA LOS TIPOS */
+
+.normal {
+    background: #aca981;
+  }
+  .fighting {
+    background: #bf3228;
+  }
+  .flying {
+    background: #a792ee;
+  }
+  .poison {
+    background: #a042a3;
+  }
+  .ground {
+    background: #e2c06b;
+  }
+  .rock {
+    background: #b6a038;
+  }
+  .bug {
+    background: #aab922;
+  }
+  .ghost {
+    background: #705a98;
+  }
+  .steel {
+    background: #b7b8ce;
+  }
+  .fire {
+    background: #e28145;
+  }
+  .water {
+    background: #718bf1;
+  }
+  .grass {
+    background: #79cb4f;
+  }
+  .electric {
+    background: #f8d02e;
+  }
+  .psychic {
+    background: #f55a86;
+  }
+  .ice {
+    background: #9bd8d8;
+  }
+  .dragon {
+    background: #6b3af8;
+  }
+  .dark {
+    background: #705847;
+  }
+  .fairy {
+    background: #ee9bae;
+  }
+  .unknown {
+    background: #68a192;
+  }
+  .shadow {
+    background: #747474;
+  }
