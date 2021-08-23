@@ -132,8 +132,6 @@ div.tipos-contenedor > div > strong {
   height: 40px;
   background-color: #171a21;
   color: ghostwhite;
-  position: absolute;
-  bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
