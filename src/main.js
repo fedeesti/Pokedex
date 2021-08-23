@@ -6,54 +6,72 @@ const $img = document.querySelector('.img-pokemon');
 const $peso = document.querySelector('.peso');
 const $altura = document.querySelector('.altura');
 const $cerrarModal = document.querySelector('.cerrar-modal');
+const $tablero = document.querySelector('#tablero');
+const $siguiente = document.querySelector('.siguiente');
+const $anterior = document.querySelector('.anterior');
 
-const URL_BASE = 'https://pokeapi.co/api/v2/pokemon/';
+const TOTAL_POKEMONES = 20;
+let idPokemon = 1;
+let contadorPokemones = 1;
 
-function iniciar(URL_BASE) {
-    fetch(`${URL_BASE}`)
-        .then(respuesta => respuesta.json())
-        .then(respuesta => {
-            const { count: totalPokemones, results: pokemones, next: siguiente, previous: anterior } = respuesta;
-            cargarPokemones(pokemones);
-            eliminarPokemones();
-            cambiarPagina(siguiente, anterior);
-            cargarModal();
+function iniciar() {
+    if(contadorPokemones <= TOTAL_POKEMONES) {
+        cargarPokemones();
+        contadorPokemones++;
+    }
+    cargarModal();
+}
+
+function cargarPokemones() {
+    fetch(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`)
+        .then(respuesta=>respuesta.json())
+        .then(pokemon => {
+            mostrarPokemones(pokemon);
+            iniciar();
         });
 }
 
-function cargarPokemones(pokemones) {
-    let $tablero = document.querySelector('#tablero');
-    pokemones.forEach((pokemon)=> {
-        fetch(pokemon.url)
-            .then(pokemon=>pokemon.json())
-            .then(pokemon=> {
-                const $figure = document.createElement('figure');
-                const $img = document.createElement('img');
-                $img.setAttribute('src', `${pokemon.sprites.front_default}`);
-                $img.setAttribute('alt', `${pokemon.name}`);
-                const $figcaptionName = document.createElement('figcaption');
-                const $figcaptionId = document.createElement('figcaption');
-                $figcaptionName.textContent = pokemon.name;
-                $figcaptionId.textContent = `Nº ${pokemon.id}`;
-                $figure.appendChild($figcaptionName);
-                $figure.appendChild($figcaptionId);
-                $figure.appendChild($img);
-                $tablero.appendChild($figure);
-            });
-    })
+function mostrarPokemones(pokemon) {
+    const $figure = document.createElement('figure');
+    const $img = document.createElement('img');
+    $img.setAttribute('src', `${pokemon.sprites.front_default}`);
+    $img.setAttribute('alt', `${pokemon.name}`);
+    const $figcaptionName = document.createElement('figcaption');
+    const $figcaptionId = document.createElement('figcaption');
+    $figcaptionName.textContent = pokemon.name;
+    $figcaptionId.textContent = `Nº ${pokemon.id}`;
+    $figure.appendChild($figcaptionName);
+    $figure.appendChild($figcaptionId);
+    $figure.appendChild($img);
+    $tablero.appendChild($figure);
+
+    idPokemon++;
 }
 
-function cambiarPagina (siguiente, anterior) {
-    let $anteriorLink = anterior ? document.querySelector('.anterior').setAttribute('href', `${anterior}`) : '';
-    let $siguienteLink = siguiente ? document.querySelector('.siguiente').setAttribute('href', `${siguiente}`) : '';
-
+function cambiarPagina () {
+    let contadorClick = 0;
     document.addEventListener('click', e => {
-        if (e.target.matches('.paginador a')) {
+        if (e.target.matches('.siguiente')) {
             e.preventDefault();
-            console.log(e.target);
-            iniciar(e.target.getAttribute('href'));
+            $anterior.style.display = 'block';
+            eliminarPokemones();
+            contadorPokemones = 1;
+            contadorClick++;
+            iniciar();
         }
-    });
+
+        if (e.target.matches('.anterior') && contadorClick !== 0) {
+            e.preventDefault();
+            eliminarPokemones();
+            contadorPokemones = 1;
+            idPokemon = idPokemon - 40;
+            contadorClick--;
+            iniciar();
+        }
+        if (contadorClick === 0) {
+            $anterior.style.display = 'none';
+        }
+    })
 }
 
 function cargarModal() {
@@ -130,4 +148,5 @@ function eliminarPokemones () {
         }
 }
 
-iniciar(URL_BASE);
+iniciar();
+cambiarPagina();
