@@ -23,7 +23,6 @@ function iniciar(URL_BASE) {
 
 function cargarPokemones(pokemones) {
     let $tablero = document.querySelector('#tablero');
-
     pokemones.forEach((pokemon)=> {
         fetch(pokemon.url)
             .then(pokemon=>pokemon.json())
