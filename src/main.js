@@ -17,7 +17,7 @@ let contadorPokemones = 0;
 let contadorClick = 0;
 
 function iniciar() {
-    if(contadorPokemones <= TOTAL_POKEMONES) {
+    if(contadorPokemones < TOTAL_POKEMONES) {
         cargarPokemones();
         contadorPokemones++;
         bloquearPaginacion();
