@@ -9,15 +9,18 @@ const $cerrarModal = document.querySelector('.cerrar-modal');
 const $tablero = document.querySelector('#tablero');
 const $siguiente = document.querySelector('.siguiente');
 const $anterior = document.querySelector('.anterior');
+const $tituloPokedex = document.querySelector('.titulo-pokedex');
 
 const TOTAL_POKEMONES = 20;
 let idPokemon = 1;
 let contadorPokemones = 1;
+let contadorClick = 0;
 
 function iniciar() {
     if(contadorPokemones <= TOTAL_POKEMONES) {
         cargarPokemones();
         contadorPokemones++;
+        bloquearPaginacion();
     }
     cargarModal();
 }
@@ -49,29 +52,62 @@ function mostrarPokemones(pokemon) {
 }
 
 function cambiarPagina () {
-    let contadorClick = 0;
-    document.addEventListener('click', e => {
-        if (e.target.matches('.siguiente')) {
-            e.preventDefault();
-            $anterior.style.display = 'block';
-            eliminarPokemones();
-            contadorPokemones = 1;
-            contadorClick++;
-            iniciar();
-        }
+    siguiente();
+    anterior();
+    reiniciarPokedex();
+}
 
-        if (e.target.matches('.anterior') && contadorClick !== 0) {
+function siguiente () {
+    $siguiente.addEventListener('click', e => {
+        e.preventDefault();
+        $anterior.style.display = 'block';
+        eliminarPokemones();
+        contadorPokemones = 0 ;
+        contadorClick++;
+        iniciar();
+    });
+}
+
+function anterior () {
+    $anterior.addEventListener('click', e => {
+        if (contadorClick !== 0) {
             e.preventDefault();
             eliminarPokemones();
-            contadorPokemones = 1;
+            contadorPokemones = 0;
             idPokemon = idPokemon - 40;
             contadorClick--;
             iniciar();
         }
+
         if (contadorClick === 0) {
+            e.preventDefault();
             $anterior.style.display = 'none';
         }
+    });
+}
+
+function reiniciarPokedex () {
+    $tituloPokedex.addEventListener('click', e => {
+        e.preventDefault();
+        eliminarPokemones();
+        $anterior.style.display = 'none';
+        contadorPokemones = 0;
+        idPokemon = 1;
+        contadorClick = 0;
+        iniciar();
     })
+}
+
+function bloquearPaginacion() {
+    if (contadorPokemones < TOTAL_POKEMONES) {
+        $tituloPokedex.style.pointerEvents = 'none';
+        $siguiente.style.pointerEvents = 'none';
+        $anterior.style.pointerEvents = 'none';
+    } else {
+        $tituloPokedex.style.pointerEvents = 'auto';
+        $siguiente.style.pointerEvents = 'auto';
+        $anterior.style.pointerEvents = 'auto';
+    }
 }
 
 function cargarModal() {

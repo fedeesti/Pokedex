@@ -11,10 +11,8 @@ html, body {
     font-family: 'Atkinson Hyperlegible', sans-serif;
 }
 
-.indice {
-    display: flex;
-    flex-direction: column;
-    margin-left: 6px;
+#img-pokedex {
+  width: 360px;
 }
 
 figure {
@@ -65,7 +63,7 @@ figure {
 .modal-contenedor{
 	display: none;
 	position: fixed;
-	z-index:1;
+	z-index: 1;
 	overflow: auto;
 	left: 0;
 	top: 0;
