@@ -13,7 +13,7 @@ const $tituloPokedex = document.querySelector('.titulo-pokedex');
 
 const TOTAL_POKEMONES = 20;
 let idPokemon = 1;
-let contadorPokemones = 1;
+let contadorPokemones = 0;
 let contadorClick = 0;
 
 function iniciar() {
