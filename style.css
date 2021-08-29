@@ -146,6 +146,13 @@ div.tipos-contenedor > div > strong {
   color: #9bd8d8;
 }
 
+@media (min-width:768px){
+  .footer {
+    position: absolute;
+    bottom: 0;
+  }
+ }
+
 /* COLORES PARA LOS TIPOS */
 
 .normal {
