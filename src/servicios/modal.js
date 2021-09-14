@@ -15,13 +15,12 @@ export function cargarModal() {
         if(e.target.matches('#tablero > figure > img')) {
             e.preventDefault();
             let id = e.target.getAttribute('alt');
-            fetchPokemon(`${URL_BASE}${id}`).then(pokemon => {
+            let pokemon = await fetchPokemon(`${URL_BASE}${id}`);
                 borrarHabilidades();
                 borrarTipos();
                 mostrarDatos(pokemon);
                 mostrarHabilidades(pokemon);
                 mostrarTipos(pokemon);
-            })
         $modalContenedor.style.display = 'block';
         }
     });
