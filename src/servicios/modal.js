@@ -10,7 +10,7 @@ import {
 const $modalContenedor = document.querySelector('.modal-contenedor');
 const URL_BASE = 'https://pokeapi.co/api/v2/pokemon/';
 
-export function cargarModal(URL_BASE) {
+export function cargarModal() {
     document.addEventListener('click', e => {
         if(e.target.matches('#tablero > figure > img')) {
             e.preventDefault();
