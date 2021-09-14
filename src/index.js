@@ -6,7 +6,7 @@ const URL_BASE = 'https://pokeapi.co/api/v2/pokemon/';
 function iniciar() {
     cargarPokemon(URL_BASE);
     cargarModal();
-    cerrarModal(URL_BASE);
+    cerrarModal();
 }
 
 iniciar();
