@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="src/img/favicon/pokeball.png">
     <title>Pokedex</title>
 </head>
 <body>
-    <h1><a href="" class="titulo-pokedex"><img src="https://i.imgur.com/PpVpBGT.png" border="0" id="img-pokedex"></a></h1>
+    <h1><img src="src/img/logo/pokemon.png" border="0"  alt="Pokemon logo" class="titulo" id="img-pokedex"></h1>
 
     <nav class="paginador">
-        <a href="" class="anterior">&larr; Anterior</a>
-        <a href="" class="siguiente">Siguiente &rarr;</a>
+        <!-- <a href="" class="anterior">&larr; Anterior</a> -->
+        <!-- <a href="" class="siguiente">Siguiente &rarr;</a> -->
     </nav>
 
-    <div class="grid-fluid" id="tablero"></div>
+    <div class="grid-fluid" id="tablero">
+        <div class="spinner"></div>
+    </div>
 
 
     <div class="modal-contenedor">
@@ -40,16 +43,16 @@
                 </ul>
             </div>
             <div class="informacion-complementaria">
-                <p>Su peso es: <strong class="peso"></strong></p>
-                <p>Su altura es: <strong class="altura"></strong></p>
+                <p>Su peso es : <strong class="peso"></strong></p>
+                <p>Su altura es : <strong class="altura"></strong></p>
             </div>
         </div>
     </div>
 
     <footer class="footer">
-        <h3>Creado por <a href="https://github.com/fedeesti/" class="footer-link" target="_blank">Fede Estigarribia</a></h3>
+        <h3>Proyecto creado por <a href="https://github.com/fedeesti/" class="footer-link" target="_blank">Fede Estigarribia</a></h3>
     </footer>
 
-    <script src="src/main.js"></script>
+    <script src="src/index.js" type="module"></script>
 </body>
 </html>
