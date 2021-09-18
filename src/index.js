@@ -9,11 +9,11 @@ function iniciar() {
     cargarPagina(URL_BASE);
 }
 
-export async function cargarPagina(url) {
+async function cargarPagina(url) {
     let data = await cargarPokemon(url);
 
     mostrarPokemonCard(data.results);
-    cambiarPagina(data.previous, data.next);
+    cambiarPagina(data.previous, data.next,cargarPagina);
     mostrarModal();
     cerrarModal();
 }
