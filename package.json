@@ -4,12 +4,18 @@
   "description": "Proyecto pokedex para r-argentina-programa",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/fedeesti/Pokedex/tree/gh-pages"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^8.4.1",
+    "reinstall-node-modules": "^2.0.0"
+  }
 }
