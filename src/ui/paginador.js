@@ -6,8 +6,8 @@ let $anteriorLink, $siguienteLink;
 const URL_BASE = 'https://pokeapi.co/api/v2/pokemon/';
 
 export function cambiarPagina(anterior, siguiente, callbackCargarPagina) {
-    $anteriorLink = anterior ? `<a href="${anterior}">&larr; Anterior</a>` : '';
-    $siguienteLink = siguiente ? `<a href="${siguiente}">Siguiente &rarr;</a>` : '';
+    $anteriorLink = anterior ? `<a href="${anterior}" class="anterior">&larr; Anterior</a>` : '';
+    $siguienteLink = siguiente ? `<a href="${siguiente}" class="siguiente">Siguiente &rarr;</a>` : '';
     $paginador.innerHTML = $anteriorLink + ' ' + $siguienteLink;
 
     document.addEventListener('click', e => {
