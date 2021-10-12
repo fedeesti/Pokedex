@@ -1,12 +1,13 @@
-import { fetchPokemon } from "../api/api.js";
 import { ocultarSpinner } from "./spinner.js";
+import { cargarPokemon } from "../servicios/servicios.js";
 
 export async function mostrarPokemonCard (pokemones) {
     const $tablero = document.querySelector('#tablero');
+
     let $pokemonCard = '';
 
     for(let i = 0; i < pokemones.length; i++) {
-        let pokemon = await fetchPokemon(pokemones[i].url);
+        const pokemon = await cargarPokemon(pokemones[i].name);
         $pokemonCard += `
             <figure>
                 <figcaption>${pokemon.name}</figcaption>
@@ -15,6 +16,7 @@ export async function mostrarPokemonCard (pokemones) {
             </figure>
         `
     }
+
     ocultarSpinner();
     $tablero.innerHTML = $pokemonCard;
 }

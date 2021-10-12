@@ -1,7 +1,9 @@
-export default `<div class="container">
-    <h1><img src="src/img/logo/pokemon.png" border="0"  alt="Pokemon logo" class="titulo" id="img-pokedex"></h1>
+export default `
+<h1><img src="src/img/logo/pokemon.png" border="0"  alt="Pokemon logo" class="titulo" id="img-pokedex"></h1>
 
     <nav class="paginador">
+        <!-- <a href="" class="anterior">&larr; Anterior</a> -->
+        <!-- <a href="" class="siguiente">Siguiente &rarr;</a> -->
     </nav>
 
     <div class="grid-fluid" id="tablero">
@@ -33,8 +35,4 @@ export default `<div class="container">
             </div>
         </div>
     </div>
-
-    <footer class="footer">
-        <h3>Proyecto creado por <a href="https://github.com/fedeesti/" class="footer-link" target="_blank">Fede Estigarribia</a></h3>
-    </footer>
-</div>`;
+`

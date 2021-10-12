@@ -5,7 +5,7 @@
 }
 
 html, body {
-    height: 100vh;
+    min-height: 100vh;
     text-align: center;
     background-color: #dc0a2d;
     font-family: 'Atkinson Hyperlegible', sans-serif;
@@ -64,6 +64,7 @@ figure {
     background-color: ghostwhite;
     margin: auto;
     padding: 6px;
+    width: 100%;
 }
 
 .modal-contenedor{
@@ -130,7 +131,7 @@ div.tipos-contenedor > div > strong {
 }
 
 .spinner {
-  display: block;
+  /* display: block; */
   border: 4px solid rgba(0,0,0, .1);
   width: 100px;
   height: 100px;
@@ -171,7 +172,7 @@ div.tipos-contenedor > div > strong {
   color: #9bd8d8;
 }
 
-@media (min-width:768px){
+@media screen and (min-width:768px){
   .footer {
     position: absolute;
     bottom: 0;
