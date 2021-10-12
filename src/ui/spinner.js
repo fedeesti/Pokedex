@@ -1,5 +1,3 @@
-const $spinner = document.querySelector('.spinner');
-
 export function crearSpinner () {
     const $tablero = document.querySelector('#tablero');
     let spin = `<div class="spinner"></div>`;
@@ -8,5 +6,7 @@ export function crearSpinner () {
 }
 
 export function ocultarSpinner() {
+    const $spinner = document.querySelector('.spinner');
+
     $spinner.style.display = 'none';
 }

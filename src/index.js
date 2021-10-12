@@ -1,21 +1,24 @@
-import { cargarPokemon } from "./servicios/servicios.js";
+import { cargarPokemones, cargarPokemon } from "./servicios/servicios.js";
 import { mostrarPokemonCard } from "./ui/pokecard.js";
 import { mostrarModal, cerrarModal } from "./ui/modal.js";
 import { cambiarPagina } from "./ui/paginador.js";
 
-const URL_BASE = 'https://pokeapi.co/api/v2/pokemon/';
+async function cargarPagina(pagina) {
 
-function iniciar() {
-    cargarPagina(URL_BASE);
-}
+    const POKEMONES_POR_PAGINA = 20;
+    let offset = pagina * POKEMONES_POR_PAGINA;
+    let limit = POKEMONES_POR_PAGINA;
 
-async function cargarPagina(url) {
-    let data = await cargarPokemon(url);
+    const listadoPokemones = await cargarPokemones(offset, limit);
 
-    mostrarPokemonCard(data.results);
-    cambiarPagina(data.previous, data.next,cargarPagina);
+    mostrarPokemonCard(listadoPokemones.results);
+    cambiarPagina(listadoPokemones.previous, listadoPokemones.next,cargarPagina);
     mostrarModal();
     cerrarModal();
 }
 
 iniciar();
+
+export function iniciar() {
+    cargarPagina(0);
+}

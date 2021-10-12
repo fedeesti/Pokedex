@@ -1,13 +1,12 @@
 import { cargarPokemon } from "../servicios/servicios.js"
 
 const $modalContenedor = document.querySelector('.modal-contenedor');
-const URL_BASE = 'https://pokeapi.co/api/v2/pokemon/';
 
 export function mostrarModal () {
     document.addEventListener('click', async e => {
         if(e.target.matches('#tablero > figure > img')) {
             e.preventDefault();
-            let id = `${URL_BASE}${e.target.getAttribute('alt')}`;
+            let id = e.target.getAttribute('alt');
             let pokemon = await cargarPokemon(id);
                 borrarHabilidades();
                 borrarTipos();
