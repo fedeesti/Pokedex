@@ -5,8 +5,12 @@
 }
 
 html, body {
-    min-height: 100vh;
+    height: 100vh;
     text-align: center;
+    display: grid;
+    grid-template-rows: 1fr 0.5fr 4fr 0.5fr;
+    grid-gap: 0.2rem;
+    grid-auto-columns: 100%;
     background-color: #dc0a2d;
     font-family: 'Atkinson Hyperlegible', sans-serif;
 }
@@ -33,6 +37,7 @@ figure {
 }
 
 .paginador {
+    width: 100%;
     margin: 10px auto;
     display: flex;
     justify-content: space-evenly;
@@ -77,6 +82,7 @@ figure {
 	width: 100%;
 	height:100%;
 	background: rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 }
 
 .modal-pokemon {
@@ -130,8 +136,13 @@ div.tipos-contenedor > div > strong {
     cursor: pointer;
 }
 
+.cerrar-modal:hover {
+  color: red;
+  background-color: #f2f2f2;
+}
+
 .spinner {
-  /* display: block; */
+  display: block;
   border: 4px solid rgba(0,0,0, .1);
   width: 100px;
   height: 100px;
