@@ -1,21 +1,14 @@
-import { cargarPokemon } from "../servicios/servicios.js"
 
 const $modalContenedor = document.querySelector('.modal-contenedor');
 
-export function mostrarModal () {
-    document.addEventListener('click', async e => {
-        if(e.target.matches('#tablero > figure > img')) {
-            e.preventDefault();
-            let id = e.target.getAttribute('alt');
-            let pokemon = await cargarPokemon(id);
-                borrarHabilidades();
-                borrarTipos();
-                mostrarDatos(pokemon);
-                mostrarHabilidades(pokemon);
-                mostrarTipos(pokemon);
-        $modalContenedor.style.display = 'block';
-        }
-    });
+export function mostrarModal (pokemon) {
+    const { name,id, sprites, weight, height, abilities, types } = pokemon;
+    borrarHabilidades();
+    borrarTipos();
+    mostrarDatos(name,id, sprites, weight, height);
+    mostrarHabilidades(abilities);
+    mostrarTipos(types);
+    $modalContenedor.style.display = 'block';
 }
 
 export function cerrarModal() {
@@ -26,38 +19,38 @@ export function cerrarModal() {
     })
 }
 
-function mostrarDatos(pokemon) {
+function mostrarDatos(name,id, sprites, weight, height) {
     const $nombre = document.querySelector('.nombre');
     const $id = document.querySelector('.id');
     const $img = document.querySelector('.img-pokemon');
     const $peso = document.querySelector('.peso');
     const $altura = document.querySelector('.altura');
 
-    $nombre.textContent = (pokemon.name).toUpperCase();
-    $id.textContent = `N° ${pokemon.id}`;
-    $img.setAttribute('src', `${pokemon.sprites.front_default}`);
-    $img.setAttribute('alt', `${pokemon.name}`);
-    $peso.textContent = `${pokemon.weight} hg`;
-    $altura.textContent = `${pokemon.height} dm`;
+    $nombre.textContent = (name).toUpperCase();
+    $id.textContent = `N° ${id}`;
+    $img.setAttribute('src', `${sprites.front_default}`);
+    $img.setAttribute('alt', `${name}`);
+    $peso.textContent = `${weight} hg`;
+    $altura.textContent = `${height} dm`;
 }
 
-function mostrarHabilidades(pokemon) {
+function mostrarHabilidades(abilities) {
     const $habilidades = document.querySelector('.habilidades');
 
-    for(let i=0;i<pokemon.abilities.length;i++) {
+    for(let i=0;i<abilities.length;i++) {
         let $habilidad = document.createElement('li');
-        $habilidad.textContent = pokemon.abilities[i].ability.name;
+        $habilidad.textContent = abilities[i].ability.name;
         $habilidades.appendChild($habilidad);
     }
 }
 
-function mostrarTipos(pokemon) {
+function mostrarTipos(types) {
     const $tipos = document.querySelector('.tipos');
 
-    for(let i=0;i<pokemon.types.length;i++) {
+    for(let i=0;i<types.length;i++) {
         let $tipo = document.createElement('strong');
-        $tipo.textContent = pokemon.types[i].type.name;
-        $tipo.classList.add(`${pokemon.types[i].type.name}`);
+        $tipo.textContent = types[i].type.name;
+        $tipo.classList.add(`${types[i].type.name}`);
         $tipos.appendChild($tipo);
     }
 }

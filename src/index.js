@@ -13,11 +13,22 @@ async function cargarPagina(pagina) {
 
     mostrarPokemonCard(listadoPokemones.results);
     cambiarPagina(listadoPokemones.previous, listadoPokemones.next,cargarPagina);
-    mostrarModal();
+}
+
+function setupModalHanlder() {
+    document.addEventListener('click', async e => {
+        if(e.target.matches('#tablero > figure > img')) {
+            e.preventDefault();
+            let id = e.target.getAttribute('alt');
+            let pokemon = await cargarPokemon(id);
+            mostrarModal(pokemon);
+        }
+    });
     cerrarModal();
 }
 
 iniciar();
+setupModalHanlder();
 
 export function iniciar() {
     cargarPagina(0);
