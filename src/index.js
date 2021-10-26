@@ -13,6 +13,7 @@ async function cargarPagina(pagina) {
 
     mostrarPokemonCard(listadoPokemones.results);
     cambiarPagina(listadoPokemones.previous, listadoPokemones.next,cargarPagina);
+    setupModalHanlder();
 }
 
 function setupModalHanlder() {
@@ -28,7 +29,6 @@ function setupModalHanlder() {
 }
 
 iniciar();
-setupModalHanlder();
 
 export function iniciar() {
     cargarPagina(0);
