@@ -12,7 +12,7 @@ export async function mostrarPokemonCard (pokemones) {
             <figure>
                 <figcaption>${pokemon.name}</figcaption>
                 <p>N° ${pokemon.id}</p>
-                <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
+                <img src="${pokemon.fotoPrincipal}" alt="${pokemon.name}">
             </figure>
         `
     }

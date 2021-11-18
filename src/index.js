@@ -11,8 +11,8 @@ async function cargarPagina(pagina) {
 
     const listadoPokemones = await cargarPokemones(offset, limit);
 
-    mostrarPokemonCard(listadoPokemones.results);
-    cambiarPagina(listadoPokemones.previous, listadoPokemones.next,cargarPagina);
+    mostrarPokemonCard(listadoPokemones.resultados);
+    cambiarPagina(listadoPokemones.anteriorUrl, listadoPokemones.siguienteUrl,cargarPagina);
     setupModalHanlder();
 }
 

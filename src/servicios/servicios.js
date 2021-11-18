@@ -8,6 +8,16 @@ import {
     guardarPokemon as guardarPokemonLocalStorage
 } from "../storage/storage.js";
 
+import { mapearPokemon, mapearListadoPokemon } from '../mapeadores/mapeadores.js';
+
+function obtenerKeyPokemon(id) {
+    return `pokemon_${id}`;
+}
+
+function obtenerKeyPokemones(offset, limit) {
+    return `pokemones_${offset}_${limit}`;
+}
+
 export async function cargarPokemon(id) {
 
     if (id === undefined) {
@@ -19,11 +29,10 @@ export async function cargarPokemon(id) {
 
     try {
         pokemon = cargarPokemonLocalStorage(key);
-        console.log('local storage');
     } catch (e) {
-        pokemon = await cargarPokemonAPI(id);
+        const pokemonData = await cargarPokemonAPI(id);
+        pokemon = mapearPokemon(pokemonData);
         guardarPokemonLocalStorage(key, JSON.stringify(pokemon));
-        console.log('fetch');
     }
 
     return pokemon;
@@ -35,20 +44,11 @@ export async function cargarPokemones(offset, limit) {
 
     try {
         pokemones = cargarPokemonLocalStorage(key);
-        console.log('local storage');
     } catch(e) {
-        pokemones = await cargarPokemonesAPI(offset, limit);
+        const pokemonesData = await cargarPokemonesAPI(offset, limit);
+        pokemones = mapearListadoPokemon(pokemonesData);
         guardarPokemonLocalStorage(key, JSON.stringify(pokemones));
-        console.log('fetch');
     }
 
     return pokemones;
-}
-
-function obtenerKeyPokemon(id) {
-    return `pokemon_${id}`;
-}
-
-function obtenerKeyPokemones(offset, limit) {
-    return `pokemones_${offset}_${limit}`;
 }

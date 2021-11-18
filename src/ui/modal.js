@@ -2,12 +2,12 @@
 const $modalContenedor = document.querySelector('.modal-contenedor');
 
 export function mostrarModal (pokemon) {
-    const { name,id, sprites, weight, height, abilities, types } = pokemon;
+    const { id, name, fotoPrincipal, weight, height, tipos, habilidades } = pokemon;
     borrarHabilidades();
     borrarTipos();
-    mostrarDatos(name,id, sprites, weight, height);
-    mostrarHabilidades(abilities);
-    mostrarTipos(types);
+    mostrarDatos( id, name, fotoPrincipal, weight, height );
+    mostrarHabilidades(habilidades);
+    mostrarTipos(tipos);
     $modalContenedor.style.display = 'block';
 }
 
@@ -19,7 +19,7 @@ export function cerrarModal() {
     })
 }
 
-function mostrarDatos(name,id, sprites, weight, height) {
+function mostrarDatos( id, name, fotoPrincipal, weight, height ) {
     const $nombre = document.querySelector('.nombre');
     const $id = document.querySelector('.id');
     const $img = document.querySelector('.img-pokemon');
@@ -28,31 +28,31 @@ function mostrarDatos(name,id, sprites, weight, height) {
 
     $nombre.textContent = (name).toUpperCase();
     $id.textContent = `N° ${id}`;
-    $img.setAttribute('src', `${sprites.front_default}`);
+    $img.setAttribute('src', `${fotoPrincipal}`);
     $img.setAttribute('alt', `${name}`);
     $peso.textContent = `${weight} hg`;
     $altura.textContent = `${height} dm`;
 }
 
-function mostrarHabilidades(abilities) {
+function mostrarHabilidades(habilidades) {
     const $habilidades = document.querySelector('.habilidades');
 
-    for(let i=0;i<abilities.length;i++) {
+    habilidades.forEach((habilidad) => {
         let $habilidad = document.createElement('li');
-        $habilidad.textContent = abilities[i].ability.name;
+        $habilidad.textContent = habilidad;
         $habilidades.appendChild($habilidad);
-    }
+    })
 }
 
-function mostrarTipos(types) {
+function mostrarTipos(tipos) {
     const $tipos = document.querySelector('.tipos');
 
-    for(let i=0;i<types.length;i++) {
+    tipos.forEach((tipo)=>{
         let $tipo = document.createElement('strong');
-        $tipo.textContent = types[i].type.name;
-        $tipo.classList.add(`${types[i].type.name}`);
+        $tipo.textContent = tipo;
+        $tipo.classList.add(`${tipo}`);
         $tipos.appendChild($tipo);
-    }
+    })
 }
 
 function borrarTipos() {
